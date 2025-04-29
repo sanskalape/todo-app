@@ -21,6 +21,10 @@ jobs:
       run: |
         cd frontend && npm install
 
+    - name: Fix permissions for react-scripts
+      run: |
+        cd frontend && chmod +x node_modules/.bin/react-scripts
+
     - name: Build frontend
       run: |
         cd frontend && npm run build
