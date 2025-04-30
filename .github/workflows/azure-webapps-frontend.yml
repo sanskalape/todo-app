@@ -1,3 +1,4 @@
+# filepath: .github/workflows/azure-webapps-frontend.yml
 name: Deploy Frontend to Azure Static Web App
 
 on:
@@ -29,7 +30,7 @@ jobs:
           npm run build
 
       - name: Deploy to Azure Static Web App
-        uses: azure/static-web-apps-deploy@v1
+        uses: azure/static-web-apps-deploy@v1.1.0
         with:
           app_location: "frontend"            # Chemin vers le projet frontend
           output_location: "frontend/build"   # Chemin vers le dossier de build React
