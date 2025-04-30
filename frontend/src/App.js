@@ -4,11 +4,22 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [title, setTitle] = useState('');
 
-  useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/tasks`)
-      .then(res => res.json())
-      .then(data => setTasks(data));
-  }, []);
+useEffect(() => {
+  if (!process.env.REACT_APP_API_URL) {
+    console.error('REACT_APP_API_URL n’est pas défini. Vérifiez la configuration des variables d’environnement.');
+    return;
+  }
+
+  fetch(`${process.env.REACT_APP_API_URL}/tasks`)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(`Erreur HTTP : ${res.status}`);
+      }
+      return res.json();
+    })
+    .then(data => setTasks(data))
+    .catch(err => console.error('Erreur lors de la récupération des tâches :', err));
+}, []);
 
   const handleAdd = () => {
     fetch(`${process.env.REACT_APP_API_URL}/tasks`, {
