@@ -31,9 +31,9 @@ jobs:
       - name: Deploy to Azure Static Web App
         uses: azure/static-web-apps-deploy@v1
         with:
-          app_location: "/frontend"            # Le chemin vers ton projet frontend
-          api_location: ""                     # Laisse vide si tu n'as pas de back-end
-          output_location: "/frontend/build"   # Le dossier de build React
-          action: "upload"                     # Définir l'action à effectuer
+          app_location: "/frontend"            
+          api_location: ""                     
+          output_location: "/frontend/build"   
+          action: "upload"                    
         env:
           AZURE_STATIC_WEB_APPS_API_TOKEN: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
