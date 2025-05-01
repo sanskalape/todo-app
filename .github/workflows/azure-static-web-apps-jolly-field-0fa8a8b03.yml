@@ -26,7 +26,7 @@ jobs:
           node-version: '18'
 
       - name: Build and Deploy
-        env: # Définir les variables d'environnement ici
+        env:
           REACT_APP_API_URL: https://todo-back-api-ejhfdpc2d8ewctdq.northeurope-01.azurewebsites.net
         uses: Azure/static-web-apps-deploy@v1
         with:
